@@ -1,7 +1,14 @@
 package org.minesweeper;
 
+import javax.swing.SwingUtilities;
+
+import org.minesweeper.graphics.GUI;
+
 public class Main {
   public static void main(String[] args) {
-    System.out.println("Hello World");
+    SwingUtilities.invokeLater(() -> {
+      GUI gui = new GUI();
+      gui.setVisible(true);
+    });
   }
 }
