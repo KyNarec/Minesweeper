@@ -11,7 +11,37 @@ public class Cell extends JButton {
     
     public Cell() {
         setText("Mine");
-
     }
- 
+
+    public boolean isMine() {
+        return isMine;
+    }
+
+    public void setMine(boolean mine) {
+        isMine = mine;
+    }
+
+    public boolean isRevealed() {
+        return isRevealed;
+    }
+
+    public void setRevealed(boolean revealed) {
+        isRevealed = revealed;
+    }
+
+    public boolean isFlagged() {
+        return isFlagged;
+    }
+
+    public void setFlagged(boolean flagged) {
+        isFlagged = flagged;
+    }
+
+    public int getAdjacentMines() {
+        return adjacentMines;
+    }
+
+    public void setAdjacentMines(int adjacentMines) {
+        this.adjacentMines = adjacentMines;
+    }
 }
