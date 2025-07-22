@@ -6,21 +6,6 @@ import javax.swing.JButton;
 
 public class Cell extends JButton {
 
-    public enum State {
-       UNKNOWN,
-       FLAGGED,
-        MINE,
-        ZERO,
-       ONE,
-       TWO,
-       THREE,
-       FOUR,
-        FIVE,
-        SIX,
-        SEVEN,
-        EIGHT
-    }
-
     private Logic logic;
     private boolean isMine;
     private State state;
@@ -45,12 +30,12 @@ public class Cell extends JButton {
     public State getState() {
         return state;
     }
- 
+
     public void setState(State state) {
         this.state = state;
     }
 
     public void setupListeners() {
-        this.addActionListener(e -> setState(State.UNKNOWN));
-  }
+        this.addActionListener(e -> logic.leftClick(x, y));
+    }
 }

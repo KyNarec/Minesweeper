@@ -1,9 +1,8 @@
 package org.minesweeper.logic;
 
-import org.minesweeper.graphics.Board;
 import org.minesweeper.graphics.Cell;
+import org.minesweeper.graphics.State;
 
-import java.util.Random;
 public class Logic {
 
     //has been opened
@@ -58,7 +57,7 @@ public class Logic {
             open[x][y] = true;
             if (firstclick) {
                 firstclick = true;
-                generate();
+                generation(x, y);
             } else {
                 if (bomb[x][y]) {
                     lost(x , y);
@@ -68,28 +67,28 @@ public class Logic {
                         recOpen(x , y);
                     }else{
                         if(attachedBombs == 1){
-                            cells[x][y].setState(Cell.State.ONE);
+                            cells[x][y].setState(State.ONE);
                         }
                         if(attachedBombs == 2){
-                            cells[x][y].setState(Cell.State.TWO);
+                            cells[x][y].setState(State.TWO);
                         }
                         if(attachedBombs == 3){
-                            cells[x][y].setState(Cell.State.THREE);
+                            cells[x][y].setState(State.THREE);
                         }
                         if(attachedBombs == 4){
-                            cells[x][y].setState(Cell.State.FOUR);
+                            cells[x][y].setState(State.FOUR);
                         }
                         if(attachedBombs == 5){
-                            cells[x][y].setState(Cell.State.FIVE);
+                            cells[x][y].setState(State.FIVE);
                         }
                         if(attachedBombs == 6){
-                            cells[x][y].setState(Cell.State.SIX);
+                            cells[x][y].setState(State.SIX);
                         }
                         if(attachedBombs == 7){
-                            cells[x][y].setState(Cell.State.SEVEN);
+                            cells[x][y].setState(State.SEVEN);
                         }
                         if(attachedBombs == 8){
-                            cells[x][y].setState(Cell.State.EIGHT);
+                            cells[x][y].setState(State.EIGHT);
                         }
                     }
 
@@ -105,10 +104,10 @@ public class Logic {
     public void rightClick(int x, int y){
         if(open[x][y]){
         }else{
-            if(cells[x][y].getState() == Cell.State.FLAGGED){
-                cells[x][y].setState(Cell.State.UNKNOWN);
+            if(cells[x][y].getState() == State.FLAGGED){
+                cells[x][y].setState(State.UNKNOWN);
             }else{
-                cells[x][y].setState(Cell.State.FLAGGED);
+                cells[x][y].setState(State.FLAGGED);
             }
         }
     }
@@ -127,12 +126,12 @@ public class Logic {
     }
 
     public void lost(int x ,int y){
-        cells[x][y].setState(Cell.State.MINE);
+        cells[x][y].setState(State.MINE);
         cells[x][y].isMine();
         for(int i = 0; i<= sizeX; i++){
             for(int j = 0; j<= sizeY; j++){
                 if(bomb[i][j] == true){
-                    cells[i][j].setState(Cell.State.MINE);
+                    cells[i][j].setState(State.MINE);
                 }
             }
         }
@@ -147,7 +146,7 @@ public class Logic {
                         if (attachedbombs == 0) {
                             recOpen(i, j);
                             open[i][j] = true;
-                            cells[i][j].setState(Cell.State.ZERO);
+                            cells[i][j].setState(State.ZERO);
                         }
                     }
                 }
