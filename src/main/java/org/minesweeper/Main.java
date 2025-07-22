@@ -7,11 +7,17 @@ import org.minesweeper.logic.Logic;
 
 public class Main {
   public static void main(String[] args) {
-    Logic logic = new Logic();
+    int sizeX = 10;
+    int sizeY = 10;
+    int bombs = 5;
+
+    Logic logic = new Logic(sizeX, sizeY, bombs);
     SwingUtilities.invokeLater(() -> {
       GUI gui = new GUI(logic);
       gui.setVisible(true);
 
+      logic.setCells(gui.getCells());
     });
+
   }
 }

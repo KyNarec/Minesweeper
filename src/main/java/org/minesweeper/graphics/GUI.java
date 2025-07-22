@@ -9,6 +9,7 @@ import javax.swing.*;
 public class GUI extends JFrame {
 
   private Logic logic;
+  private final Board board;
   public GUI(Logic logic) {
     setTitle("Minesweeper");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -18,8 +19,12 @@ public class GUI extends JFrame {
 
     setJMenuBar(new MainMenu());
 
-    Board board = new Board(10, 10, logic);
+    board = new Board(10, 10, logic);
     add(board);
 
+  }
+
+  public Cell[][] getCells() {
+    return board.getCells();
   }
 }
