@@ -4,7 +4,6 @@ import javax.swing.JButton;
 
 public class Cell extends JButton {
 
-
     private enum State {
        UNKNOWN,
        FLAGGED,
@@ -28,7 +27,6 @@ public class Cell extends JButton {
     public void setMine(boolean mine) {
         isMine = mine;
     }
-
 
     public State getState() {
         return state;
