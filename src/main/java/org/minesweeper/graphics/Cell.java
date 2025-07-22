@@ -13,5 +13,7 @@ public class Cell extends JButton {
         setText("Mine");
 
     }
+
+
  
 }
