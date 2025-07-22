@@ -6,7 +6,7 @@ import org.minesweeper.graphics.State;
 import java.util.Random;
 
 public class Logic {
-/*
+
     //has been opened
     private final boolean[][] open;
 
@@ -169,5 +169,4 @@ public class Logic {
         }
     }
 
- */
 }
