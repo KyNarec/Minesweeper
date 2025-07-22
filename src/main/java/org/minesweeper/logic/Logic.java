@@ -5,7 +5,6 @@ import org.minesweeper.graphics.Cell;
 
 import java.util.Random;
 public class Logic {
-    /*
 
     //has been opened
     private boolean[][] open;
@@ -173,5 +172,5 @@ public class Logic {
                 placedMines++;
             }
         }
-    }*/
+    }
 }
