@@ -22,4 +22,8 @@ public class Board extends JPanel {
             }
         }
     }
+
+    public Cell[][] getCells(){
+        return cells;
+    }
 }

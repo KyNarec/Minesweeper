@@ -5,13 +5,19 @@ import javax.swing.JButton;
 public class Cell extends JButton {
 
 
-    private enum State {
+    public enum State {
        UNKNOWN,
        FLAGGED,
+        MINE,
+        ZERO,
        ONE,
        TWO,
        THREE,
-       FOUR
+       FOUR,
+        FIVE,
+        SIX,
+        SEVEN,
+        EIGHT
     }
     private boolean isMine;
     private State state;

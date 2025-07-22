@@ -9,6 +9,7 @@ public class Main {
     SwingUtilities.invokeLater(() -> {
       GUI gui = new GUI();
       gui.setVisible(true);
+
     });
   }
 }
