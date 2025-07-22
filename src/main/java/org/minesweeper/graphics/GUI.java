@@ -2,9 +2,9 @@ package org.minesweeper.graphics;
 
 import org.minesweeper.logic.Logic;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class GUI extends JFrame {
 
@@ -14,8 +14,12 @@ public class GUI extends JFrame {
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setSize(600, 600);
     setResizable(false);
-    Board board = new Board(6, 6, logic);
-    add(board, BorderLayout.CENTER);
-    pack();
+    setLocationRelativeTo(null);
+
+    setJMenuBar(new MainMenu());
+
+    Board board = new Board(10, 10, logic);
+    add(board);
+
   }
 }
