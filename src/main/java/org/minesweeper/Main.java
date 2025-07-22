@@ -2,6 +2,7 @@ package org.minesweeper;
 
 import javax.swing.SwingUtilities;
 
+import org.minesweeper.graphics.Cell;
 import org.minesweeper.graphics.GUI;
 import org.minesweeper.logic.Logic;
 

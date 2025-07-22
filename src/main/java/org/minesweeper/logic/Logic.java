@@ -4,7 +4,7 @@ import org.minesweeper.graphics.Cell;
 import org.minesweeper.graphics.State;
 
 public class Logic {
-
+/*
     //has been opened
     private boolean[][] open;
 
@@ -172,4 +172,6 @@ public class Logic {
             }
         }
     }
+
+ */
 }
