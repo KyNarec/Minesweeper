@@ -10,6 +10,7 @@ public class GUI extends JFrame {
 
   private Logic logic;
   private final Board board;
+
   public GUI(Logic logic) {
     setTitle("Minesweeper");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
