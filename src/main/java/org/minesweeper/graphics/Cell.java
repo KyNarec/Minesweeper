@@ -20,6 +20,7 @@ public class Cell extends JButton {
         isMine = mine;
     }
 
+ 
     public boolean isRevealed() {
         return isRevealed;
     }
