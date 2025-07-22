@@ -43,6 +43,6 @@ public class Cell extends JButton {
     }
 
     public void setupListeners() {
-        //this.addActionListener(e -> logic.leftClick(x, y));
+        this.addActionListener(e -> logic.leftClick(x, y));
     }
 }
