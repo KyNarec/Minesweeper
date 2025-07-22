@@ -1,9 +1,10 @@
 package org.minesweeper.graphics;
 
+import org.minesweeper.logic.Logic;
+
 import javax.swing.JButton;
 
 public class Cell extends JButton {
-
 
     public enum State {
        UNKNOWN,
@@ -19,12 +20,18 @@ public class Cell extends JButton {
         SEVEN,
         EIGHT
     }
+
+    private Logic logic;
     private boolean isMine;
     private State state;
+    private int x;
+    private int y;
 
-    public Cell() {
+    public Cell(Logic logic) {
         setText("Mine");
         this.state = State.UNKNOWN;
+        this.logic = logic;
+        setupListeners();
     }
 
     public boolean isMine() {
@@ -35,7 +42,6 @@ public class Cell extends JButton {
         isMine = mine;
     }
 
-
     public State getState() {
         return state;
     }
@@ -43,4 +49,8 @@ public class Cell extends JButton {
     public void setState(State state) {
         this.state = state;
     }
+
+    public void setupListeners() {
+        this.addActionListener(e -> setState(State.UNKNOWN));
+  }
 }

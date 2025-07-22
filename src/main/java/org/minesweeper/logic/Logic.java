@@ -3,7 +3,9 @@ package org.minesweeper.logic;
 import org.minesweeper.graphics.Board;
 import org.minesweeper.graphics.Cell;
 
+import java.util.Random;
 public class Logic {
+    /*
 
     //has been opened
     private boolean[][] open;
@@ -24,9 +26,9 @@ public class Logic {
     private int sizeX;
     private int sizeY;
 
+
     //reference to cells for use in logic
     private Cell[][] cells;
-
 
     public Logic(int nSizeX, int nSizeY, int bombs , Cell[][] ncells){
 
@@ -153,4 +155,23 @@ public class Logic {
             }
         }
     }
+
+    private void generation(int pressedX, int pressedY){
+        //setting up local variabels
+        int placedMines = 0;
+
+        //Making it by a random position with java.util.Random
+        while (placedMines <= nbomb){
+
+            //What field to place a mine
+            int x = randomNumbers.nextInt(this.sizeX);
+            int y = randomNumbers.nextInt(this.sizeY);
+
+            //Checking if there is already a bomb and if true placing it
+            if (!this.bomb[x][y]&&this.open[x][y]){
+                this.bomb[x][y] = true;
+                placedMines++;
+            }
+        }
+    }*/
 }

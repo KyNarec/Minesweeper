@@ -1,17 +1,25 @@
 package org.minesweeper.graphics;
 
-import java.awt.BorderLayout;
+import org.minesweeper.logic.Logic;
 
-import javax.swing.JFrame;
+import java.awt.*;
+
+import javax.swing.*;
 
 public class GUI extends JFrame {
-  public GUI() {
+
+  private Logic logic;
+  public GUI(Logic logic) {
     setTitle("Minesweeper");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setSize(600, 600);
     setResizable(false);
-    Board board = new Board(6, 6);
-    add(board, BorderLayout.CENTER);
-    pack();
+    setLocationRelativeTo(null);
+
+    setJMenuBar(new MainMenu());
+
+    Board board = new Board(10, 10, logic);
+    add(board);
+
   }
 }
