@@ -11,6 +11,7 @@ public class Main {
     SwingUtilities.invokeLater(() -> {
       GUI gui = new GUI(logic);
       gui.setVisible(true);
+
     });
   }
 }
