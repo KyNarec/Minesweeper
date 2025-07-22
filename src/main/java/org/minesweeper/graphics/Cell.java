@@ -4,12 +4,21 @@ import javax.swing.JButton;
 
 public class Cell extends JButton {
 
+
+    private enum State {
+       UNKNOWN,
+       FLAGGED,
+       ONE,
+       TWO,
+       THREE,
+       FOUR
+    }
     private boolean isMine;
-    private boolean isRevealed;
-    private boolean isFlagged;
+    private State state;
 
     public Cell() {
         setText("Mine");
+        this.state = State.UNKNOWN;
     }
 
     public boolean isMine() {
@@ -20,20 +29,11 @@ public class Cell extends JButton {
         isMine = mine;
     }
 
-    public boolean isRevealed() {
-        return isRevealed;
+    public State getState() {
+        return state;
     }
 
-    public void setRevealed(boolean revealed) {
-        isRevealed = revealed;
+    public void setState(State state) {
+        this.state = state;
     }
-
-    public boolean isFlagged() {
-        return isFlagged;
-    }
-
-    public void setFlagged(boolean flagged) {
-        isFlagged = flagged;
-    }
-
 }
