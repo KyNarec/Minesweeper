@@ -14,13 +14,18 @@ public class Logic {
     //amount of bombs
     private int nbomb;
 
+    private int sizeX;
+    private int sizeY;
 
-    public Logic(int size, int bombs){
+
+    public Logic(int nSizeX, int nSizeY, int bombs){
 
         //setting of variables
         open = new boolean[size][size];
         bomb = new boolean[size][size];
         nbomb = bombs;
+        this.sizeX = nSizeX;
+        this.sizeY = nSizeY;
 
         //setting field to false
         for(int i = 0;i<size;i++){
@@ -29,6 +34,10 @@ public class Logic {
             }
         }
 
+
+    }
+
+    private void generation(int pressedX, int pressedY){
 
     }
 }
