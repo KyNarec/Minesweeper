@@ -13,7 +13,6 @@ public class Cell extends JButton {
        THREE,
        FOUR
     }
-    private boolean isRevealed;
     private boolean isMine;
     private State state;
 
@@ -35,14 +34,6 @@ public class Cell extends JButton {
         return state;
     }
  
-    public boolean isRevealed() {
-        return isRevealed;
-    }
-
-    public void setRevealed(boolean revealed) {
-        isRevealed = revealed;
-    }
-
     public void setState(State state) {
         this.state = state;
     }
