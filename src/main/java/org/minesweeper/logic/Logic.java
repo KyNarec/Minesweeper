@@ -42,7 +42,6 @@ public class Logic {
     private void generation(int pressedX, int pressedY){
         //setting up local variabels
         int placedMines = 0;
-        int fields = this.sizeX*this.sizeY;
 
         //Making it by a random position with java.util.Random
         while (placedMines <= nbomb){
@@ -52,7 +51,7 @@ public class Logic {
             int y = randomNumbers.nextInt(this.sizeY);
 
             //Checking if there is already a bomb and if true placing it
-            if (!this.bomb[x][y]){
+            if (!this.bomb[x][y]&&this.open[x][y]){
                 this.bomb[x][y] = true;
                 placedMines++;
             }
