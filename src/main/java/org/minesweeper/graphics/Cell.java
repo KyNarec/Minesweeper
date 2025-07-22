@@ -25,6 +25,7 @@ public class Cell extends JButton {
         setText("Mine");
         this.state = State.UNKNOWN;
         this.logic = logic;
+        setupListeners();
     }
 
     public boolean isMine() {
@@ -42,4 +43,8 @@ public class Cell extends JButton {
     public void setState(State state) {
         this.state = state;
     }
+
+    public void setupListeners() {
+        this.addActionListener(e -> setState(State.UNKNOWN));
+  }
 }
