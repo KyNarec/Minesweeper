@@ -136,6 +136,7 @@ public class Logic {
             for (int j = -1; j <= 1; j++) {
                 if (x + i >= 0 && x + i < sizeX && y + j >= 0 && y + j < sizeY) {
                     numBombs++;
+                    System.out.println("attachedBombs++. New attachedBombs count: " + numBombs);
                 }
             }
         }
