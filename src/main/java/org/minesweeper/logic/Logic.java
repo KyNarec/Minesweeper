@@ -14,6 +14,7 @@ public class Logic {
     //amount of bombs
     private int nbomb;
 
+    //size of the field
     private int sizeX;
     private int sizeY;
 
