@@ -28,7 +28,7 @@ public class Board extends JPanel {
             final int row = i;
             threads[i] = new Thread(() -> {
                 for (int j = 0; j < cols; j++) {
-                    cells[row][j] = new Cell(row, j, logic);
+                    cells[j][row] = new Cell(j, row, logic);
                 }
             });
             threads[i].start();
@@ -47,7 +47,7 @@ public class Board extends JPanel {
         SwingUtilities.invokeLater(() -> {
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < cols; j++) {
-                    add(cells[i][j]);
+                    add(cells[j][i]);
                 }
             }
             revalidate();  // Optional: re-layout the container
