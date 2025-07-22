@@ -1,7 +1,7 @@
 package org.minesweeper.logic;
-import java.util.Random
-
+import java.util.Random;
 public class Logic {
+    /*
 
     //has been opened
     private boolean[][] open;
@@ -56,5 +56,5 @@ public class Logic {
                 placedMines++;
             }
         }
-    }
+    }*/
 }
