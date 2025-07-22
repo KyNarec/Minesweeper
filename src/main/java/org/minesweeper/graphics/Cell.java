@@ -13,6 +13,7 @@ public class Cell extends JButton {
        THREE,
        FOUR
     }
+    private boolean isRevealed;
     private boolean isMine;
     private State state;
 
