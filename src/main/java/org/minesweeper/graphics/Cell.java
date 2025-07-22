@@ -29,8 +29,17 @@ public class Cell extends JButton {
         isMine = mine;
     }
 
+
     public State getState() {
         return state;
+    }
+ 
+    public boolean isRevealed() {
+        return isRevealed;
+    }
+
+    public void setRevealed(boolean revealed) {
+        isRevealed = revealed;
     }
 
     public void setState(State state) {
