@@ -14,6 +14,7 @@ public class Main {
     Logic logic = new Logic(sizeX, sizeY, bombs);
     SwingUtilities.invokeLater(() -> {
       GUI gui = new GUI(logic);
+      logic.setGUI(gui);
       gui.setVisible(true);
 
       logic.setCells(gui.getCells());
