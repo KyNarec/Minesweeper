@@ -88,7 +88,7 @@ public class Logic {
    * @param gui the gui
    */
   public void setGUI(GUI gui) {
-    System.out.println("Set gui");
+    //System.out.println("Set gui");
     this.gui = gui;
   }
 
