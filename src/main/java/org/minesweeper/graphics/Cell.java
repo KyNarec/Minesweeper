@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Objects;
+import java.net.URL;
 
 public class Cell extends JButton {
 
@@ -68,15 +70,15 @@ public class Cell extends JButton {
     }
 
     public void setupListeners() {
-//        this.addActionListener(e -> {
-//            logic.leftClick(x, y);
-//            System.out.println("Cell x = " +
-//                    x +
-//                    " and y = " +
-//                    y +
-//                    " has been clicked");
-//        });
-        this.addMouseListener(new MouseAdapter(){
+        // this.addActionListener(e -> {
+        // logic.leftClick(x, y);
+        // System.out.println("Cell x = " +
+        // x +
+        // " and y = " +
+        // y +
+        // " has been clicked");
+        // });
+        this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (SwingUtilities.isLeftMouseButton(e)) {
@@ -105,19 +107,19 @@ public class Cell extends JButton {
      */
     public void displayState(State state) {
         switch (state) {
-            case UNKNOWN -> setIcon("src/main/resources/hidden.jpg");
-            case ONE -> setIcon("src/main/resources/one.jpg");
-            case TWO -> setIcon("src/main/resources/two.jpg");
-            case THREE -> setIcon("src/main/resources/three.jpg");
-            case FOUR -> setIcon("src/main/resources/four.jpg");
-            case FIVE -> setIcon("src/main/resources/five.jpg");
-            case SIX -> setIcon("src/main/resources/six.jpg");
-            case SEVEN -> setIcon("src/main/resources/seven.jpg");
-            case EIGHT -> setIcon("src/main/resources/eight.jpg");
-            case MINE -> setIcon("src/main/resources/bomb.jpg");
-            case FLAGGED -> setIcon("src/main/resources/flag.jpg");
-            // TODO: make icon for zero and insert here
-            case ZERO -> setIcon("src/main/resources/revealed.png");
+            case UNKNOWN -> setIcon("/images/hidden.jpg");
+            case ONE -> setIcon("/images/one.jpg");
+            case TWO -> setIcon("/images/two.jpg");
+            case THREE -> setIcon("/images/three.jpg");
+            case FOUR -> setIcon("/images/four.jpg");
+            case FIVE -> setIcon("/images/five.jpg");
+            case SIX -> setIcon("/images/six.jpg");
+            case SEVEN -> setIcon("/images/seven.jpg");
+            case EIGHT -> setIcon("/images/eight.jpg");
+            case MINE -> setIcon("/images/bomb.jpg");
+            case FLAGGED -> setIcon("/images/flag.jpg");
+            case ZERO -> setIcon("/images/revealed.jpg");
+
         }
     }
 
@@ -127,6 +129,16 @@ public class Cell extends JButton {
      * @param iconPath path to the Icon
      */
     public void setIcon(String iconPath) {
-        setIcon(new ImageIcon(new ImageIcon(iconPath).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
+        // ImageIcon(iconPath).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
+        try {
+            URL imageUrl = getClass().getResource(iconPath);
+            if (imageUrl != null) {
+                ImageIcon originalIcon = new ImageIcon(imageUrl);
+                Image scaledImage = originalIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+                setIcon(new ImageIcon(scaledImage));
+            }
+        } catch (Exception e) {
+            System.err.println("Could not load image: " + iconPath);
+        }
     }
 }
