@@ -2,8 +2,6 @@ package org.minesweeper.graphics;
 
 import org.minesweeper.logic.Logic;
 
-import java.awt.*;
-
 import javax.swing.*;
 
 public class GUI extends JFrame {
@@ -19,13 +17,21 @@ public class GUI extends JFrame {
     setLocationRelativeTo(null);
 
     setJMenuBar(new MainMenu());
-
-    board = new Board(10, 10, logic);
+    this.logic = logic;
+    this.board = new Board(10, 10, logic);
     add(board);
 
   }
 
   public Cell[][] getCells() {
     return board.getCells();
+  }
+
+  public void displayWinScreen(){
+    add(new WinScreen());
+  }
+
+  public void displayLoseScreen(){
+    add(new LoseScreen());
   }
 }

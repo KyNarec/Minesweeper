@@ -2,8 +2,10 @@ package org.minesweeper.logic;
 
 import org.minesweeper.graphics.Cell;
 import org.minesweeper.graphics.State;
+import org.minesweeper.graphics.GUI;
 
 import java.util.Random;
+import java.util.Arrays;
 
 public class Logic {
 
@@ -47,6 +49,12 @@ public class Logic {
    */
   private Cell[][] cells;
 
+  /**
+   * Specifies the gui, so that it can be called to display the win or lose
+   * screen.
+   */
+  private GUI gui;
+
   public Logic(int nSizeX, int nSizeY, int bombs) {
 
     // setting of variables
@@ -63,7 +71,6 @@ public class Logic {
         open[i][j] = false;
       }
     }
-
   }
 
   /**
@@ -73,6 +80,16 @@ public class Logic {
    */
   public void setCells(Cell[][] newCells) {
     this.cells = newCells;
+  }
+
+  /**
+   * Sets the gui value, so that it can be used to call the win / lose screen.
+   * 
+   * @param gui the gui
+   */
+  public void setGUI(GUI gui) {
+    System.out.println("Set gui");
+    this.gui = gui;
   }
 
   public void leftClick(int x, int y) {
@@ -99,6 +116,7 @@ public class Logic {
       open[x][y] = true;
     } else
       System.out.println("Cell is already open");
+    if (arraysAreFlipped(bomb, open)) win();
   }
 
   public void rightClick(int x, int y) {
@@ -146,6 +164,7 @@ public class Logic {
         }
       }
     }
+    gui.displayLoseScreen();
   }
 
   public void recOpen(int x, int y) {
@@ -221,5 +240,30 @@ public class Logic {
         placedMines++;
       }
     }
+  }
+
+  public void win() {
+    try {
+      gui.displayWinScreen();
+    } catch (Exception e) {
+      System.err.println(e.toString());
+    }
+  }
+
+  public boolean arraysAreFlipped(boolean[][] a, boolean[][] b) {
+    if (a.length != b.length)
+      return false;
+
+    for (int i = 0; i < a.length; i++) {
+      if (a[i].length != b[i].length)
+        return false;
+
+      for (int j = 0; j < a[i].length; j++) {
+        if (a[i][j] == b[i][j])
+          return false; // same value means not flipped
+      }
+    }
+
+    return true;
   }
 }
