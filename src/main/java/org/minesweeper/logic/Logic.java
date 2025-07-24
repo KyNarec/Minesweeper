@@ -81,21 +81,19 @@ public class Logic {
       if (firstClick) {
         firstClick = false;
         generation();
-        leftClick(x, y);
+      }
+      if (bomb[x][y]) {
+        lost(x, y);
+        System.out.println("You clicked on a bomb. GAME OVER!");
       } else {
-        if (bomb[x][y]) {
-          lost(x, y);
-          System.out.println("You clicked on a bomb. GAME OVER!");
+        int attachedBombs = countBombs(x, y);
+        if (attachedBombs == 0) {
+          cells[x][y].setState(State.ZERO);
+          recOpen(x, y);
+          System.out.println("Attached bombs are 0");
         } else {
-          int attachedBombs = countBombs(x, y);
-          if (attachedBombs == 0) {
-            cells[x][y].setState(State.ZERO);
-            recOpen(x, y);
-            System.out.println("Attached bombs are 0");
-          } else {
-            System.out.println("Switching attached Bombs. attachedBombs: " + attachedBombs);
-            changeStateByAttachedBombs(x, y, attachedBombs);
-          }
+          System.out.println("Switching attached Bombs. attachedBombs: " + attachedBombs);
+          changeStateByAttachedBombs(x, y, attachedBombs);
         }
       }
       open[x][y] = true;
@@ -151,35 +149,20 @@ public class Logic {
   }
 
   public void recOpen(int x, int y) {
-    if (!open[x][y]) {
-      System.out.println("in recOpen, the cell not open");
-      for (int i = -1; i <= 1; i++) {
-        for (int j = -1; j <= 1; j++) {
-          if (x + i >= 0 && x + i < sizeX && y + j >= 0 && y + j < sizeY) {
-            int nX = x + i;
-            int nY = y + j;
-            if (nX != 0 && nY != 0) {
-              System.out.println("recOpen now counting bombs for x = " + nX + " and y = " + nY);
-              int attachedBombs = countBombs(nX, nY);
-              System.out.println("attachedBombs for x = " + nX + " and y = " + nY + " : " + attachedBombs);
+    open[x][y] = true;
+    cells[x][y].setState(State.ZERO);
 
-              if (attachedBombs == 0) {
-                open[nX][nY] = true;
-                recOpen(nX, nY);
-                cells[nY][nY].setState(State.ZERO);
-                System.out.println("Cell x = " +
-                    nX +
-                    " and y = " +
-                    nY +
-                    " has now the state ZERO");
-              } else
-              // changeStateByAttachedBombs(x, y, attachedBombs);
-              {
-                System.out.println("recOpen is manually changing state of the cell");
-                changeStateByAttachedBombs(nX, nY, attachedBombs);
-                // open[nX][nY] = true;
-              }
-            }
+    for (int i = -1; i <= 1; i++) {
+      for (int j = -1; j <= 1; j++) {
+        int nX = x + i;
+        int nY = y + j;
+        if (nX >= 0 && nX < sizeX && nY >= 0 && nY < sizeY && !open[nX][nY]) {
+          int attachedBombs = countBombs(nX, nY);
+          if (attachedBombs == 0) {
+            recOpen(nX, nY);
+          } else {
+            open[nX][nY] = true;
+            changeStateByAttachedBombs(nX, nY, attachedBombs);
           }
         }
       }
