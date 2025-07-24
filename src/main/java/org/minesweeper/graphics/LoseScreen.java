@@ -1,23 +1,53 @@
 package org.minesweeper.graphics;
 
+import org.minesweeper.Main;
+
 import javax.swing.*;
+import java.awt.*;
 
-public class LoseScreen extends JFrame{
+public class LoseScreen extends JFrame {
 
-  private JLabel loseText;
+    public LoseScreen() {
+        setTitle("You lost!");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(300, 150);
+        setResizable(false);
+        setLocationRelativeTo(null);
 
-  public LoseScreen(){
-    setTitle("You lost!");
-    setDefaultCloseOperation(EXIT_ON_CLOSE);
-    setSize(300, 150);
-    setResizable(false);
-    setLocationRelativeTo(null);
+        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
-    loseText = new JLabel("You lost! What a dissapointment!", SwingConstants.CENTER);
+        JLabel loseText = new JLabel("You lost! What a disappointment!");
+        loseText.setAlignmentX(Component.CENTER_ALIGNMENT);
+        loseText.setBorder(BorderFactory.createEmptyBorder(50, 0, 30, 0));
 
-    add(loseText);
-    setVisible(true);
-    repaint();
-  }
-  
+        JButton retry = getRetry();
+
+        add(loseText);
+        add(Box.createVerticalGlue()); // Pushes content to center
+        add(retry);
+        add(Box.createVerticalGlue()); // Adds space below button
+        setVisible(true);
+        repaint();
+    }
+
+    private JButton getRetry() {
+        JButton retry = new JButton("Retry");
+        retry.setAlignmentX(Component.CENTER_ALIGNMENT);
+        retry.setMaximumSize(new Dimension(200, 60));
+        retry.setPreferredSize(new Dimension(200, 60));
+
+        retry.addActionListener(e -> {
+            dispose(); // Close current window
+
+            // Close all other windows
+            Window[] windows = Window.getWindows();
+            for (Window window : windows) {
+                window.dispose();
+            }
+
+            // Call main method directly
+            Main.main(new String[]{});
+        });
+        return retry;
+    }
 }
