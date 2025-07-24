@@ -91,7 +91,7 @@ public class Cell extends JButton {
             case MINE -> setIcon("src/main/resources/bomb.jpg");
             case FLAGGED -> setIcon("src/main/resources/flag.jpg");
             // TODO: make icon for zero and insert here
-            case ZERO -> setIcon("src/main/resources/flag.png");
+            case ZERO -> setIcon("src/main/resources/revealed.png");
         }
     }
 
