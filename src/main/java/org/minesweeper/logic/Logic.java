@@ -162,8 +162,8 @@ public class Logic {
               System.out.println("recOpen now counting bombs for x = " + nX + " and y = " + nY);
               int attachedBombs = countBombs(nX, nY);
               if (attachedBombs == 0) {
-                recOpen(nX, nY);
                 open[nX][nY] = true;
+                recOpen(nX, nY);
                 cells[nY][nY].setState(State.ZERO);
                 System.out.println("Cell x = " +
                     nX +
