@@ -81,7 +81,7 @@ public class Logic {
       if (firstClick) {
         firstClick = false;
         generation();
-        leftClick(x,y);
+        leftClick(x, y);
       } else {
         if (bomb[x][y]) {
           lost(x, y);
@@ -144,7 +144,7 @@ public class Logic {
       for (int j = 0; j < sizeY; j++) {
         if (bomb[i][j]) {
           cells[i][j].setState(State.MINE);
-          //leftClick(i, j);
+          // leftClick(i, j);
         }
       }
     }
@@ -161,6 +161,8 @@ public class Logic {
             if (nX != 0 && nY != 0) {
               System.out.println("recOpen now counting bombs for x = " + nX + " and y = " + nY);
               int attachedBombs = countBombs(nX, nY);
+              System.out.println("attachedBombs for x = " + nX + " and y = " + nY + " : " + attachedBombs);
+
               if (attachedBombs == 0) {
                 open[nX][nY] = true;
                 recOpen(nX, nY);
@@ -171,8 +173,12 @@ public class Logic {
                     nY +
                     " has now the state ZERO");
               } else
-                // changeStateByAttachedBombs(x, y, attachedBombs);
-                leftClick(nX, nY);
+              // changeStateByAttachedBombs(x, y, attachedBombs);
+              {
+                System.out.println("recOpen is manually changing state of the cell");
+                changeStateByAttachedBombs(nX, nY, attachedBombs);
+                // open[nX][nY] = true;
+              }
             }
           }
         }
