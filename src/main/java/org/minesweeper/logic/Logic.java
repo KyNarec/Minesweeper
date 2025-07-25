@@ -5,7 +5,6 @@ import org.minesweeper.graphics.State;
 import org.minesweeper.graphics.GUI;
 
 import java.util.Random;
-import java.util.Arrays;
 
 public class Logic {
 
@@ -75,7 +74,7 @@ public class Logic {
 
   /**
    * Sets the cells variable so that the logic can reference cells on its own.
-   * 
+   *
    * @param newCells a list of cells
    */
   public void setCells(Cell[][] newCells) {
@@ -84,7 +83,7 @@ public class Logic {
 
   /**
    * Sets the gui value, so that it can be used to call the win / lose screen.
-   * 
+   *
    * @param gui the gui
    */
   public void setGUI(GUI gui) {
@@ -246,7 +245,7 @@ public class Logic {
     try {
       gui.displayWinScreen();
     } catch (Exception e) {
-      System.err.println(e.toString());
+      System.err.println(e);
     }
   }
 

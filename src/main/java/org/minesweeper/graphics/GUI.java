@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class GUI extends JFrame {
 
-    private Logic logic;
+    private final Logic logic;
     private final Board board;
 
     public GUI(int sizeX, int sizeY, Logic logic) {
@@ -47,7 +47,7 @@ public class GUI extends JFrame {
 
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
-        String s = (String) JOptionPane.showInputDialog(
+        String s = JOptionPane.showInputDialog(
                 setSizeScreen,
                 "Set the size of the game",
                 "Set size",
@@ -82,6 +82,7 @@ public class GUI extends JFrame {
         // Call main method directly
         Main.main(new String[]{});
     }
+
     public void setBombsScreen() {
         JFrame setSizeScreen = new JFrame();
         setSizeScreen.setTitle("Set amount of bombs");
@@ -92,7 +93,7 @@ public class GUI extends JFrame {
 
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
-        String s = (String) JOptionPane.showInputDialog(
+        String s = JOptionPane.showInputDialog(
                 setSizeScreen,
                 "Set the desired amount of bombs",
                 "Set amount of bombs",

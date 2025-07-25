@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Objects;
 import java.net.URL;
 
 public class Cell extends JButton {
@@ -68,16 +67,11 @@ public class Cell extends JButton {
         this.state = state;
         displayState(state);
     }
-
+    
+    /**
+     * Filters left and right click on the cell.
+     */
     public void setupListeners() {
-        // this.addActionListener(e -> {
-        // logic.leftClick(x, y);
-        // System.out.println("Cell x = " +
-        // x +
-        // " and y = " +
-        // y +
-        // " has been clicked");
-        // });
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
