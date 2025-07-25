@@ -9,7 +9,7 @@ public class Main {
   public static void main(String[] args) {
     int sizeX = 10;
     int sizeY = 10;
-    int bombs = 5;
+    int bombs = 15;
 
     Logic logic = new Logic(sizeX, sizeY, bombs);
     SwingUtilities.invokeLater(() -> {
