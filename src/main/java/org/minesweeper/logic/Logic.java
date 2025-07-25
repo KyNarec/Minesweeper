@@ -93,8 +93,7 @@ public class Logic {
   }
 
   public void leftClick(int x, int y) {
-    if (!open[x][y]) {
-      // open[x][y] = true;
+    if (!open[x][y] && cells[x][y].getState() != State.FLAGGED) {
       if (firstClick) {
         firstClick = false;
         generation();
