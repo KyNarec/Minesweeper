@@ -226,11 +226,11 @@ public class Logic {
     Random r = new Random();
 
     // Making it by a random position with java.util.Random
-    while (placedMines <= nBomb) {
+    while (placedMines < nBomb) {
 
       // What field to place a mine
-      int x = r.nextInt(this.sizeX - 1);
-      int y = r.nextInt(this.sizeY - 1);
+      int x = r.nextInt(this.sizeX);
+      int y = r.nextInt(this.sizeY);
 
       System.out.println("Generating a mine");
 
